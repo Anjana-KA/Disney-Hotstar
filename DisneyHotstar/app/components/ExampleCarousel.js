@@ -108,7 +108,7 @@ useEffect(()=>{
         renderItem={renderitem}
         horizontal={true}
         pagingEnabled={true}
-        onScroll={handleScroll}
+        onScroll={(event) => handleScroll(event)}
       />
       <View
         style={{
@@ -124,3 +124,6 @@ useEffect(()=>{
 };
 export default ExampleCarousel;
  
+
+
+

@@ -36,7 +36,10 @@ const Carousel = () => {
     );
   };
 
-  const handleScroll = ({ item, index }) => {};
+  const handleScroll = ({ event }) => {
+
+
+  };
 
   const renderDotIndicators = () => {
     return carouselData.map((dot, index) => {
@@ -62,6 +65,7 @@ const Carousel = () => {
         renderItem={renderitem}
         horizontal={true}
         pagingEnabled={true}
+        onScroll={handleScroll}
       />
       <View
         style={{

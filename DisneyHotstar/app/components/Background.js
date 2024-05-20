@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Image } from 'react-native'
 
 export default function Background() {
   return (
-    <Image source={require('../../assets/4.webp')} style={styles.image} /> 
+    <Image source={require('../../assets/2.webp')} style={styles.image} /> 
   );
 }
 

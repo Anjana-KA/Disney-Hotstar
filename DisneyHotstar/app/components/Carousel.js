@@ -1,7 +1,8 @@
 import React, { useState ,useRef, useEffect} from "react";
 import { StyleSheet, Text, View, Image, FlatList, Dimensions } from "react-native";
+import LinearGradient from "react-native-linear-gradient";
 
-const ExampleCarousel = () => {
+const Carousel = () => {
   const flatlistRef = useRef();
   const screenwidth = Dimensions.get("window").width;
   const [activeIndex, setActiveIndex] = useState(0);
@@ -27,14 +28,14 @@ const ExampleCarousel = () => {
   const carouselData = [
     { id: "01", image: require("../../assets/1.webp") },
     { id: "02", image: require("../../assets/2.webp") },
-    { id: "03", image: require("../../assets/4.webp") },
-    { id: "04", image: require("../../assets/3.webp") },
+    { id: "03", image: require("../../assets/3.webp") },
+    { id: "04", image: require("../../assets/4.webp") },
   ];
 
   const renderitem = ({ item }) => {
     return (
       <View>
-        <Image source={item.image} style={{ height: 200, width: screenwidth }} />
+        <Image source={item.image} style={{ height: 250, width: screenwidth }} />
       </View>
     );
   };
@@ -79,6 +80,5 @@ const ExampleCarousel = () => {
     </View>
   );
 };
-
-export default ExampleCarousel;
+export default Carousel;
 

@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import Background from './app/components/Background.js'
-import ExampleCarousel from './app/components/ExampleCarousel.js'
+import Carousel from './app/components/Carousel.js'
 
 
 export default function App() {
@@ -8,7 +8,7 @@ export default function App() {
     <View>
 
       {/* <Background /> */}
-      <ExampleCarousel/>
+      <Carousel/>
 
     </View>
   );

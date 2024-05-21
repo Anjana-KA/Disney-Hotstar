@@ -1,6 +1,5 @@
-import React, { useState ,useRef, useEffect} from "react";
-import { StyleSheet, Text, View, Image, FlatList, Dimensions } from "react-native";
-import LinearGradient from "react-native-linear-gradient";
+import React, { useState, useRef, useEffect } from "react";
+import { Text, View, Image, FlatList, Dimensions, StyleSheet } from "react-native";
 
 const Carousel = () => {
   const flatlistRef = useRef();
@@ -34,38 +33,32 @@ const Carousel = () => {
 
   const renderitem = ({ item }) => {
     return (
-      <View>
-        <Image source={item.image} style={{ height: 250, width: screenwidth }} />
+      <View style={styles.itemContainer}>
+        <Image source={item.image} style={styles.image} />
       </View>
     );
   };
 
- const handleScroll = (event) => {
-  const scrollPosition = event.nativeEvent.contentOffset.x;
-  const index = Math.round(scrollPosition / screenwidth);
-  setActiveIndex(index);
-};
-
+  const handleScroll = (event) => {
+    const scrollPosition = event.nativeEvent.contentOffset.x;
+    const index = Math.round(scrollPosition / screenwidth);
+    setActiveIndex(index);
+  };
 
   const renderDotIndicators = () => {
     return carouselData.map((dot, index) => (
       <View
         key={index}
-        style={{
-          backgroundColor: activeIndex === index ? "white" : "darkgray",
-          height: 10,
-          width: 10,
-          borderRadius: 5,
-          marginHorizontal: 6,
-          marginTop: 10 ,
-        }}
+        style={[
+          styles.dotIndicator,
+          { backgroundColor: activeIndex === index ? "white" : "darkgray" },
+        ]}
       ></View>
     ));
   };
 
   return (
-    <View>
-      <Text>Carousel</Text>
+    <View style={styles.container}>
       <FlatList
         data={carouselData}
         ref={flatlistRef}
@@ -73,12 +66,38 @@ const Carousel = () => {
         horizontal={true}
         pagingEnabled={true}
         onScroll={handleScroll}
+        showsHorizontalScrollIndicator={false}
       />
-      <View style={{ flexDirection: "row", justifyContent: "center", marginTop: 30 }}>
+      <View style={styles.dotContainer}>
         {renderDotIndicators()}
       </View>
     </View>
   );
 };
-export default Carousel;
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  itemContainer: {
+    flex: 1,
+    alignItems: "center",
+  },
+  image: {
+    height: 320,
+    width: Dimensions.get("window").width,
+  },
+  dotContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+  },
+  dotIndicator: {
+    height: 10,
+    width: 10,
+    borderRadius: 5,
+    marginHorizontal: 6,
+    bottom:480,
+  },
+});
+
+export default Carousel;

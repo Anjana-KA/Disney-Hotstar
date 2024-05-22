@@ -27,19 +27,26 @@ export default function NavBar() {
               } else if (route.name === "New & Hot") {
                 iconName = focused ? "flame" : "flame-outline";
               } else if (route.name === "Downloads") {
-                iconName = focused ? "cloud-download" : "cloud-download-outline";
+                iconName = focused
+                  ? "cloud-download"
+                  : "cloud-download-outline";
               } else if (route.name === "My Space") {
                 iconName = focused ? "person" : "person-outline";
               }
               return <Ionicons name={iconName} size={size} color={color} />;
             },
+            tabBarActiveTintColor: "tomato",
+            tabBarInactiveTintColor: "gray",
+            tabBarStyle: {
+              display: "flex",
+            },
           })}
-          tabBarOptions={{
-            activeTintColor: "tomato",
-            inactiveTintColor: "gray",
-          }}
         >
-          <Tab.Screen name="Home" component={Carousel} options={{ headerShown: false }} />
+          <Tab.Screen
+            name="Home"
+            component={Carousel}
+            options={{ headerShown: false }}
+          />
           <Tab.Screen name="Search" component={SearchScreen} />
           <Tab.Screen name="New & Hot" component={NewHot} />
           <Tab.Screen name="Downloads" component={Downloads} />
@@ -51,14 +58,13 @@ export default function NavBar() {
 }
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: "black",
-    },
-    text: {
-      color: "white",
-      fontSize: 24,
-      fontWeight: "bold",
-    },
-  });
-  
+  container: {
+    flex: 1,
+    backgroundColor: "black",
+  },
+  text: {
+    color: "white",
+    fontSize: 24,
+    fontWeight: "bold",
+  },
+});

@@ -27,8 +27,8 @@ const MovieList = () => {
     fetchImages();
   }, []);
 
-  const handleImagePress = () => {
-    navigation.navigate("Details");
+  const handleImagePress = (url) => {
+    navigation.navigate("Details", { imageUrl: url });
   };
 
   return (
@@ -37,7 +37,7 @@ const MovieList = () => {
       <ScrollView horizontal={true}>
         <View style={styles.container}>
           {imageUrls.map((url, index) => (
-            <TouchableOpacity key={index} onPress={handleImagePress}>
+            <TouchableOpacity key={index} onPress={() => handleImagePress(url)}>
               <Image source={{ uri: url }} style={styles.image} />
             </TouchableOpacity>
           ))}

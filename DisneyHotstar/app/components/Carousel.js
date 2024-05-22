@@ -66,12 +66,14 @@ const Carousel = () => {
     ));
   };
 
-  const handleSubscribePress = () => {
-  };
+  const handleSubscribePress = () => {};
 
   return (
     <View style={styles.container}>
-        <TouchableOpacity style={styles.subscribeButton} onPress={handleSubscribePress}>
+      <TouchableOpacity
+        style={styles.subscribeButton}
+        onPress={handleSubscribePress}
+      >
         <Text style={styles.subscribeText}>Subscribe to Watch</Text>
       </TouchableOpacity>
       <FlatList
@@ -83,7 +85,7 @@ const Carousel = () => {
         onScroll={handleScroll}
         showsHorizontalScrollIndicator={false}
       />
-            <Text style={styles.tagText}>Family . Comedy . Action . Adventure</Text>
+      <Text style={styles.tagText}>Family . Comedy . Action . Adventure</Text>
 
       <View style={styles.dotContainer}>{renderDotIndicators()}</View>
       <MovieList />
@@ -116,25 +118,25 @@ const styles = StyleSheet.create({
     bottom: 10,
   },
   subscribeButton: {
-    alignItems: 'center',
+    alignItems: "center",
     paddingVertical: 12,
     paddingHorizontal: 14,
-    backgroundColor: 'rgba(250, 247, 251, 0.2)',
-    position: 'absolute',
+    backgroundColor: "rgba(250, 247, 251, 0.2)",
+    position: "absolute",
     top: 390,
-    alignSelf: 'center',
+    alignSelf: "center",
     zIndex: 1,
   },
   subscribeText: {
-    color: 'white',
+    color: "white",
     fontSize: 16,
   },
   tagText: {
-    color: 'white',
+    color: "white",
     fontSize: 16,
-    marginBottom:87,
-    left:90,
-    fontWeight: 'bold',
+    marginBottom: 87,
+    left: 90,
+    fontWeight: "bold",
   },
 });
 

@@ -35,10 +35,12 @@ export default function NavBar() {
               }
               return <Ionicons name={iconName} size={size} color={color} />;
             },
-            tabBarActiveTintColor: "tomato",
+            tabBarActiveTintColor: "white",
             tabBarInactiveTintColor: "gray",
             tabBarStyle: {
               display: "flex",
+              borderTopWidth: 0,
+              backgroundColor: 'black',
             },
           })}
         >
@@ -60,10 +62,9 @@ export default function NavBar() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "black",
   },
   text: {
-    color: "white",
+    color: "black",
     fontSize: 24,
     fontWeight: "bold",
   },

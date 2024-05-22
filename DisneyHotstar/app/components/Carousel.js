@@ -1,5 +1,14 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Text, View, Image, FlatList, Dimensions, StyleSheet } from "react-native";
+import {
+  Text,
+  View,
+  Image,
+  FlatList,
+  Dimensions,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
+import MovieList from "./MovieList";
 
 const Carousel = () => {
   const flatlistRef = useRef();
@@ -57,8 +66,14 @@ const Carousel = () => {
     ));
   };
 
+  const handleSubscribePress = () => {
+  };
+
   return (
     <View style={styles.container}>
+        <TouchableOpacity style={styles.subscribeButton} onPress={handleSubscribePress}>
+        <Text style={styles.subscribeText}>Subscribe to Watch</Text>
+      </TouchableOpacity>
       <FlatList
         data={carouselData}
         ref={flatlistRef}
@@ -68,9 +83,10 @@ const Carousel = () => {
         onScroll={handleScroll}
         showsHorizontalScrollIndicator={false}
       />
-      <View style={styles.dotContainer}>
-        {renderDotIndicators()}
-      </View>
+            <Text style={styles.tagText}>Family . Comedy . Action . Adventure</Text>
+
+      <View style={styles.dotContainer}>{renderDotIndicators()}</View>
+      <MovieList />
     </View>
   );
 };
@@ -97,7 +113,28 @@ const styles = StyleSheet.create({
     width: 10,
     borderRadius: 5,
     marginHorizontal: 6,
-    bottom:480,
+    bottom: 10,
+  },
+  subscribeButton: {
+    alignItems: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 14,
+    backgroundColor: 'rgba(250, 247, 251, 0.2)',
+    position: 'absolute',
+    top: 390,
+    alignSelf: 'center',
+    zIndex: 1,
+  },
+  subscribeText: {
+    color: 'white',
+    fontSize: 16,
+  },
+  tagText: {
+    color: 'white',
+    fontSize: 16,
+    marginBottom:87,
+    left:90,
+    fontWeight: 'bold',
   },
 });
 

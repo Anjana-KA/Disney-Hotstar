@@ -2,14 +2,28 @@ import React from "react";
 import { View, StyleSheet, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons"; // Example: using Ionicons from Expo
+import { createStackNavigator } from "@react-navigation/stack";
+import { Ionicons } from "@expo/vector-icons";
 import Carousel from "../components/Carousel";
 import MySpaceScreen from "./../screens/MySpaceScreen";
 import Downloads from "./../screens/Downloads";
 import NewHot from "./../screens/New&Hot";
 import SearchScreen from "./../screens/SearchScreen";
+import DetailsScreen from "./../screens/DetailsScreen";
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
+
+const HomeStack = () => (
+  <Stack.Navigator>
+    <Stack.Screen
+      name="HomeTab"
+      component={Carousel}
+      options={{ headerShown: false }}
+    />
+    <Stack.Screen name="Details" component={DetailsScreen} />
+  </Stack.Navigator>
+);
 
 export default function NavBar() {
   return (
@@ -40,13 +54,13 @@ export default function NavBar() {
             tabBarStyle: {
               display: "flex",
               borderTopWidth: 0,
-              backgroundColor: 'black',
+              backgroundColor: "black",
             },
           })}
         >
           <Tab.Screen
             name="Home"
-            component={Carousel}
+            component={HomeStack}
             options={{ headerShown: false }}
           />
           <Tab.Screen name="Search" component={SearchScreen} />
@@ -58,7 +72,6 @@ export default function NavBar() {
     </NavigationContainer>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

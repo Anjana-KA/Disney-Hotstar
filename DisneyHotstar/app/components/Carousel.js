@@ -44,6 +44,7 @@ const Carousel = () => {
     return (
       <View style={styles.itemContainer}>
         <Image source={item.image} style={styles.image} />
+        <View style={styles.gradientOverlay} />
       </View>
     );
   };
@@ -86,7 +87,6 @@ const Carousel = () => {
         showsHorizontalScrollIndicator={false}
       />
       <Text style={styles.tagText}>Family . Comedy . Action . Adventure</Text>
-
       <View style={styles.dotContainer}>{renderDotIndicators()}</View>
       <MovieList />
     </View>
@@ -138,6 +138,13 @@ const styles = StyleSheet.create({
     left: 90,
     fontWeight: "bold",
   },
+  gradientOverlay: {
+    ...StyleSheet.absoluteFillObject,
+    top: 250, // Ensure the gradient starts from the bottom
+    left: 0,
+    right: 0,
+    height: "30%", // Adjust as needed
+    backgroundColor: "rgba(0, 0, 0, 0.2)", // Adjust the opacity as needed
+  },
 });
-
 export default Carousel;

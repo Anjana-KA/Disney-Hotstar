@@ -1,8 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Text, View, Image, StyleSheet, ScrollView } from "react-native";
+import {
+  Text,
+  View,
+  Image,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 const MovieList = () => {
   const [imageUrls, setImageUrls] = useState([]);
+  const navigation = useNavigation();
 
   useEffect(() => {
     const fetchImages = async () => {
@@ -18,13 +27,19 @@ const MovieList = () => {
     fetchImages();
   }, []);
 
+  const handleImagePress = () => {
+    navigation.navigate("Details");
+  };
+
   return (
     <View>
       <Text style={styles.heading}>Latest Releases</Text>
       <ScrollView horizontal={true}>
         <View style={styles.container}>
           {imageUrls.map((url, index) => (
-            <Image key={index} source={{ uri: url }} style={styles.image} />
+            <TouchableOpacity key={index} onPress={handleImagePress}>
+              <Image source={{ uri: url }} style={styles.image} />
+            </TouchableOpacity>
           ))}
         </View>
       </ScrollView>

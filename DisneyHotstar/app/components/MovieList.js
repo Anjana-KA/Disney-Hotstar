@@ -10,25 +10,24 @@ import {
 import { useNavigation } from "@react-navigation/native";
 
 const MovieList = () => {
-  const [imageUrls, setImageUrls] = useState([]);
+  const [movies, setMovies] = useState([]);
   const navigation = useNavigation();
 
   useEffect(() => {
-    const fetchImages = async () => {
+    const fetchMovies = async () => {
       try {
         const resp = await fetch("https://api.sampleapis.com/movies/horror");
         const data = await resp.json();
-        const urls = data.map((movie) => movie.posterURL);
-        setImageUrls(urls);
+        setMovies(data);
       } catch (error) {
-        console.error("Error fetching images:", error);
+        console.error("Error fetching movies:", error);
       }
     };
-    fetchImages();
+    fetchMovies();
   }, []);
 
-  const handleImagePress = (url) => {
-    navigation.navigate("Details", { imageUrl: url });
+  const handleMoviePress = (movie) => {
+    navigation.navigate("Details", { movie });
   };
 
   return (
@@ -36,9 +35,12 @@ const MovieList = () => {
       <Text style={styles.heading}>Latest Releases</Text>
       <ScrollView horizontal={true}>
         <View style={styles.container}>
-          {imageUrls.map((url, index) => (
-            <TouchableOpacity key={index} onPress={() => handleImagePress(url)}>
-              <Image source={{ uri: url }} style={styles.image} />
+          {movies.map((movie, index) => (
+            <TouchableOpacity
+              key={index}
+              onPress={() => handleMoviePress(movie)}
+            >
+              <Image source={{ uri: movie.posterURL }} style={styles.image} />
             </TouchableOpacity>
           ))}
         </View>

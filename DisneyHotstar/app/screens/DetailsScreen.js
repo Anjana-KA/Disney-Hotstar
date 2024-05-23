@@ -8,6 +8,7 @@ import {
   ScrollView,
 } from "react-native";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import MovieList from "../components/MovieList";
 
 export default function DetailsScreen({ route }) {
@@ -32,13 +33,26 @@ export default function DetailsScreen({ route }) {
         Line ship, see Disney Wish. This article is about the 2023 Disney
         film.For the 2013 South Korean film also known as Wish.
       </Text>
+      <View style={styles.iconsContainer}>
+        <TouchableOpacity style={styles.iconWrapper}>
+          <MaterialIcons name="add" size={24} color="white" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.iconWrapper}>
+          <AntDesign name="sharealt" size={24} color="white" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.iconWrapper}>
+          <MaterialIcons name="file-download" size={24} color="white" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.iconWrapper}>
+          <AntDesign name="hearto" size={24} color="white" />
+        </TouchableOpacity>
+      </View>
       <View style={styles.movieListContainer}>
         <MovieList />
       </View>
     </ScrollView>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -91,8 +105,18 @@ const styles = StyleSheet.create({
   },
   movieListContainer: {
     flex: 1,
-    top: 200,
+    top: 120,
     justifyContent: "flex-end",
     width: "100%",
+  },
+  iconsContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    marginVertical: 20,
+    top:110,
+    justifyContent:"left",
+  },
+  iconWrapper: {
+    marginHorizontal: 20,
   },
 });

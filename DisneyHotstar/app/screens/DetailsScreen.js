@@ -39,6 +39,7 @@ export default function DetailsScreen({ route }) {
   );
 }
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

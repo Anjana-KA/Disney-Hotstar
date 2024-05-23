@@ -9,14 +9,14 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-const MovieList = () => {
+const MovieLists = () => {
   const [movies, setMovies] = useState([]);
   const navigation = useNavigation();
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const resp = await fetch("https://api.sampleapis.com/movies/horror");
+        const resp = await fetch("https://api.sampleapis.com/movies/family");
         const data = await resp.json();
         setMovies(data);
       } catch (error) {
@@ -32,9 +32,9 @@ const MovieList = () => {
 
   return (
     <View>
-      <Text style={styles.heading}>Latest Releases</Text>
+      <Text style={styles.headings}>Latest Releases</Text>
       <ScrollView horizontal={true}>
-        <View style={styles.container}>
+        <View style={styles.containers}>
           {movies.map((movie, index) => (
             <TouchableOpacity
               key={index}
@@ -50,7 +50,7 @@ const MovieList = () => {
 };
 
 const styles = StyleSheet.create({
-  container: {
+  containers: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
@@ -60,12 +60,12 @@ const styles = StyleSheet.create({
     height: 225,
     margin: 5,
   },
-  heading: {
+  headings: {
     fontSize: 20,
     fontWeight: "bold",
-    marginBottom: 12,
+    marginBottom: 2,
     color: "white",
   },
 });
 
-export default MovieList;
+export default MovieLists;

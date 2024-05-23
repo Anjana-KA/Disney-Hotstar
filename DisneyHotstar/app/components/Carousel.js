@@ -6,9 +6,11 @@ import {
   FlatList,
   Dimensions,
   StyleSheet,
+  ScrollView,
   TouchableOpacity,
 } from "react-native";
 import MovieList from "./MovieList";
+import MovieLists from "./MovieLists";
 
 const Carousel = () => {
   const flatlistRef = useRef();
@@ -70,13 +72,7 @@ const Carousel = () => {
   const handleSubscribePress = () => {};
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity
-        style={styles.subscribeButton}
-        onPress={handleSubscribePress}
-      >
-        <Text style={styles.subscribeText}>Subscribe to Watch</Text>
-      </TouchableOpacity>
+    <ScrollView style={styles.container}>
       <FlatList
         data={carouselData}
         ref={flatlistRef}
@@ -86,10 +82,18 @@ const Carousel = () => {
         onScroll={handleScroll}
         showsHorizontalScrollIndicator={false}
       />
+
       <Text style={styles.tagText}>Family . Comedy . Action . Adventure</Text>
+      <TouchableOpacity
+        style={styles.subscribeButton}
+        onPress={handleSubscribePress}
+      >
+        <Text style={styles.subscribeText}>Subscribe to Watch</Text>
+      </TouchableOpacity>
       <View style={styles.dotContainer}>{renderDotIndicators()}</View>
       <MovieList />
-    </View>
+      <MovieLists />
+    </ScrollView>
   );
 };
 
@@ -109,21 +113,20 @@ const styles = StyleSheet.create({
   dotContainer: {
     flexDirection: "row",
     justifyContent: "center",
+    paddingVertical: 16,
   },
   dotIndicator: {
     height: 10,
     width: 10,
     borderRadius: 5,
     marginHorizontal: 6,
-    bottom: 10,
   },
   subscribeButton: {
     alignItems: "center",
     paddingVertical: 12,
     paddingHorizontal: 14,
     backgroundColor: "rgba(250, 247, 251, 0.2)",
-    position: "absolute",
-    top: 390,
+    bottom: 0,
     alignSelf: "center",
     zIndex: 1,
   },
@@ -132,9 +135,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   tagText: {
+    paddingVertical: 16,
     color: "white",
     fontSize: 16,
-    marginBottom: 87,
     fontWeight: "bold",
     alignSelf: "center",
   },

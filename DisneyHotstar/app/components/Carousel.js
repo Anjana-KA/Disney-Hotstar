@@ -135,16 +135,16 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 16,
     marginBottom: 87,
-    left: 90,
     fontWeight: "bold",
+    alignSelf: "center",
   },
   gradientOverlay: {
     ...StyleSheet.absoluteFillObject,
-    top: 250, // Ensure the gradient starts from the bottom
+    top: 250,
     left: 0,
     right: 0,
-    height: "30%", // Adjust as needed
-    backgroundColor: "rgba(0, 0, 0, 0.2)", // Adjust the opacity as needed
+    height: "30%",
+    backgroundColor: "rgba(0, 0, 0, 0.0)",
   },
 });
 export default Carousel;

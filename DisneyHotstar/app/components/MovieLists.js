@@ -32,7 +32,7 @@ const MovieLists = () => {
 
   return (
     <View>
-      <Text style={styles.headings}>Latest Releases</Text>
+      <Text style={styles.headings}>Popular Shows</Text>
       <ScrollView horizontal={true}>
         <View style={styles.containers}>
           {movies.map((movie, index) => (

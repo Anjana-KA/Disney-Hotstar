@@ -10,6 +10,7 @@ import {
 import AntDesign from "@expo/vector-icons/AntDesign";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import MovieList from "../components/MovieList";
+import MovieLists from "../components/MovieLists";
 
 export default function DetailsScreen({ route }) {
   const { movie } = route.params;
@@ -49,6 +50,7 @@ export default function DetailsScreen({ route }) {
       </View>
       <View style={styles.movieListContainer}>
         <MovieList />
+        <MovieLists />
       </View>
     </ScrollView>
   );
@@ -100,7 +102,6 @@ const styles = StyleSheet.create({
   },
   iconsContainer: {
     flexDirection: "row",
-    justifyContent: "center",
     marginVertical: 20,
   },
   iconWrapper: {

@@ -8,24 +8,21 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { fetchMovies } from "../api/Api";
 
 const MovieList = () => {
   const [movies, setMovies] = useState([]);
   const navigation = useNavigation();
 
   useEffect(() => {
-    const fetchMovies = async () => {
+    const fetchMoviesData = async () => {
       try {
-        const resp = await fetch("https://api.sampleapis.com/movies/horror");
-        const data = await resp.json();
+        const data = await fetchMovies();
         setMovies(data);
-      } catch (error) {
-        console.error("Error fetching movies:", error);
-      }
+      } catch (error) {}
     };
-    fetchMovies();
+    fetchMoviesData();
   }, []);
-
   const handleMoviePress = (movie) => {
     navigation.navigate("Details", { movie });
   };

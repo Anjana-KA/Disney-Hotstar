@@ -1,15 +1,15 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Ionicons } from "@expo/vector-icons";
 import Carousel from "../components/Carousel";
-import MySpaceScreen from "./../screens/MySpaceScreen";
-import Downloads from "./../screens/Downloads";
-import NewHot from "./../screens/New&Hot";
-import SearchScreen from "./../screens/SearchScreen";
-import DetailsScreen from "./../screens/DetailsScreen";
+import MySpaceScreen from "../screens/MySpaceScreen";
+import Downloads from "../screens/Downloads";
+import NewHot from "../screens/New&Hot";
+import SearchScreen from "../screens/SearchScreen";
+import DetailsScreen from "../screens/DetailsScreen";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -46,6 +46,8 @@ export default function NavBar() {
                   : "cloud-download-outline";
               } else if (route.name === "My Space") {
                 iconName = focused ? "person" : "person-outline";
+              } else if (route.name === "Favorites") {
+                iconName = focused ? "heart" : "heart-outline";
               }
               return <Ionicons name={iconName} size={size} color={color} />;
             },
@@ -67,6 +69,7 @@ export default function NavBar() {
           <Tab.Screen name="New & Hot" component={NewHot} />
           <Tab.Screen name="Downloads" component={Downloads} />
           <Tab.Screen name="My Space" component={MySpaceScreen} />
+          <Tab.Screen name="Favorites" component={MySpaceScreen} />
         </Tab.Navigator>
       </View>
     </NavigationContainer>
@@ -75,10 +78,5 @@ export default function NavBar() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  text: {
-    color: "black",
-    fontSize: 24,
-    fontWeight: "bold",
   },
 });

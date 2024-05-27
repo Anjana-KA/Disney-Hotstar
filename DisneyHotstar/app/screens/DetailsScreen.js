@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import {
   View,
   Text,
@@ -7,13 +7,22 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-import AntDesign from "@expo/vector-icons/AntDesign";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { AntDesign, MaterialIcons } from "@expo/vector-icons";
+import MySpaceContext from "../context/MySpaceContext";
 import MovieList from "../components/MovieList";
 import MovieLists from "../components/MovieLists";
 
 export default function DetailsScreen({ route }) {
   const { movie } = route.params;
+  const [isHearted, setIsHearted] = useState(false);
+  const { likedCards, addLikedCard } = useContext(MySpaceContext);
+
+  const toggleHeart = () => {
+    setIsHearted(!isHearted);
+    if (!isHearted) {
+      addLikedCard(movie);
+    }
+  };
 
   return (
     <ScrollView style={styles.container}>
@@ -45,7 +54,12 @@ export default function DetailsScreen({ route }) {
           <MaterialIcons name="file-download" size={24} color="white" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconWrapper}>
-          <AntDesign name="hearto" size={24} color="white" />
+          <AntDesign
+            name={isHearted ? "heart" : "hearto"}
+            size={24}
+            color={isHearted ? "red" : "white"}
+            onPress={toggleHeart}
+          />
         </TouchableOpacity>
       </View>
       <View style={styles.movieListContainer}>

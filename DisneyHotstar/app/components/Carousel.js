@@ -94,7 +94,7 @@ const Carousel = () => {
       <View style={styles.dotContainer}>{renderDotIndicators()}</View>
       <MovieList />
       <MovieLists />
-      <PopularMovies/>
+      <PopularMovies />
     </ScrollView>
   );
 };

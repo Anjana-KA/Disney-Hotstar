@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   View,
   Text,
@@ -16,14 +16,19 @@ export default function DetailsScreen({ route }) {
   const [isHearted, setIsHearted] = useState(false);
   const { likedCards, addLikedCard, removeLikedCard } = useContext(MySpaceContext);
 
+  useEffect(() => {
+    setIsHearted(likedCards.some(card => card.id === movie.id));
+  }, [likedCards, movie]);
+
   const toggleHeart = () => {
-    setIsHearted(!isHearted);
+    setIsHearted(prevIsHearted => !prevIsHearted);
     if (!isHearted) {
       addLikedCard(movie);
     } else {
       removeLikedCard(movie.id);
     }
   };
+
   return (
     <ScrollView style={styles.container}>
       <Image source={{ uri: movie.posterURL }} style={styles.image} />

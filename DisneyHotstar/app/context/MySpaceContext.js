@@ -6,11 +6,16 @@ export const MySpaceProvider = ({ children }) => {
   const [likedCards, setLikedCards] = useState([]);
 
   const addLikedCard = (card) => {
-    setLikedCards([...likedCards, card]);
+    if (!likedCards.some((c) => c.id === card.id)) {
+      setLikedCards([...likedCards, card]);
+    }
+  };
+  const removeLikedCard = (cardId) => {
+    setLikedCards(likedCards.filter((card) => card.id !== cardId));
   };
 
   return (
-    <MySpaceContext.Provider value={{ likedCards, addLikedCard }}>
+    <MySpaceContext.Provider value={{ likedCards, addLikedCard, removeLikedCard }}>
       {children}
     </MySpaceContext.Provider>
   );

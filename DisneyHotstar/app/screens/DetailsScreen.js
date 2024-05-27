@@ -11,19 +11,19 @@ import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import MySpaceContext from "../context/MySpaceContext";
 import MovieList from "../components/MovieList";
 import MovieLists from "../components/MovieLists";
-
 export default function DetailsScreen({ route }) {
   const { movie } = route.params;
   const [isHearted, setIsHearted] = useState(false);
-  const { likedCards, addLikedCard } = useContext(MySpaceContext);
+  const { likedCards, addLikedCard, removeLikedCard } = useContext(MySpaceContext);
 
   const toggleHeart = () => {
     setIsHearted(!isHearted);
     if (!isHearted) {
       addLikedCard(movie);
+    } else {
+      removeLikedCard(movie.id);
     }
   };
-
   return (
     <ScrollView style={styles.container}>
       <Image source={{ uri: movie.posterURL }} style={styles.image} />

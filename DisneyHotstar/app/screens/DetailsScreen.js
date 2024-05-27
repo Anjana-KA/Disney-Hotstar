@@ -14,14 +14,15 @@ import MovieLists from "../components/MovieLists";
 export default function DetailsScreen({ route }) {
   const { movie } = route.params;
   const [isHearted, setIsHearted] = useState(false);
-  const { likedCards, addLikedCard, removeLikedCard } = useContext(MySpaceContext);
+  const { likedCards, addLikedCard, removeLikedCard } =
+    useContext(MySpaceContext);
 
   useEffect(() => {
-    setIsHearted(likedCards.some(card => card.id === movie.id));
+    setIsHearted(likedCards.some((card) => card.id === movie.id));
   }, [likedCards, movie]);
 
   const toggleHeart = () => {
-    setIsHearted(prevIsHearted => !prevIsHearted);
+    setIsHearted((prevIsHearted) => !prevIsHearted);
     if (!isHearted) {
       addLikedCard(movie);
     } else {

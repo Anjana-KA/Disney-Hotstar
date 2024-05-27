@@ -15,7 +15,9 @@ export const MySpaceProvider = ({ children }) => {
   };
 
   return (
-    <MySpaceContext.Provider value={{ likedCards, addLikedCard, removeLikedCard }}>
+    <MySpaceContext.Provider
+      value={{ likedCards, addLikedCard, removeLikedCard }}
+    >
       {children}
     </MySpaceContext.Provider>
   );

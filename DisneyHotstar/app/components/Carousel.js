@@ -12,6 +12,7 @@ import {
 import MovieList from "./MovieList";
 import MovieLists from "./MovieLists";
 import PopularMovies from "./PopularMovies";
+import TitleCards from "./TitleCards";
 
 const Carousel = () => {
   const flatlistRef = useRef();
@@ -94,6 +95,7 @@ const Carousel = () => {
       <View style={styles.dotContainer}>{renderDotIndicators()}</View>
       <MovieList />
       <MovieLists />
+      <TitleCards />
       <PopularMovies />
     </ScrollView>
   );

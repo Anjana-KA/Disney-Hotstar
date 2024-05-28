@@ -15,7 +15,7 @@ export default function DetailsScreen({ route }) {
   const { movie } = route.params;
   const [isHearted, setIsHearted] = useState(false);
   const { likedCards, addLikedCard, removeLikedCard } =
-    useContext(MySpaceContext);
+  useContext(MySpaceContext);
 
   useEffect(() => {
     setIsHearted(likedCards.some((card) => card.id === movie.id));

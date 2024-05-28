@@ -52,12 +52,15 @@ export default function DetailsScreen({ route }) {
       <View style={styles.iconsContainer}>
         <TouchableOpacity style={styles.iconWrapper}>
           <MaterialIcons name="add" size={24} color="white" />
+          <Text style={styles.iconText}>Add</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconWrapper}>
           <AntDesign name="sharealt" size={24} color="white" />
+          <Text style={styles.iconText}>Share</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconWrapper}>
           <MaterialIcons name="file-download" size={24} color="white" />
+          <Text style={styles.iconText}>Download</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.iconWrapper}>
           <AntDesign
@@ -66,6 +69,9 @@ export default function DetailsScreen({ route }) {
             color={isHearted ? "red" : "white"}
             onPress={toggleHeart}
           />
+          <Text style={styles.iconText}>
+            {isHearted ? "Favourites" : "Like"}
+          </Text>
         </TouchableOpacity>
       </View>
       <View style={styles.movieListContainer}>
@@ -121,13 +127,18 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   iconsContainer: {
+    justifyContent: "space-evenly",
     flexDirection: "row",
     marginVertical: 20,
   },
   iconWrapper: {
-    marginHorizontal: 20,
+    alignItems: "center",
   },
   movieListContainer: {
     marginTop: 20,
+  },
+  iconText: {
+    color: "white",
+    marginTop: 5,
   },
 });
